@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UploadScreen from "./layout/Upload Screen/UploadScreen";
 import PianoScreen from "./layout/Piano Screen/PianoScreen";
-import { useAudioContext } from "./hooks/useAudioContext";
+import { useAudioContext } from "./utils/useAudioContext";
 
 export default function App() {
   const [melody, setMelody] = useState(null);

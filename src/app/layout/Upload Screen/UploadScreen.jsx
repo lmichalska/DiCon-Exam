@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { imageFileToNotes } from "../../utils/functions";
+
 import GeneratingStage from "./stages/GeneratingStage";
 import IntroStage from "./stages/IntroStage";
 import MoodStage from "./stages/MoodStage";
@@ -10,13 +11,13 @@ export default function UploadScreen({ onMelodyGenerated }) {
   const [stage, setStage] = useState("intro");
 
   const [file, setFile] = useState(null);
-  const [mood, setMood] = useState(null);
+  const [mood, setMood] = useState("peaceful");
   const [notes, setNotes] = useState(null);
 
-  async function generate() {
+  async function generate(selectedMood = mood) {
     setStage("generating");
 
-    const result = await imageFileToNotes(file, 64);
+    const result = await imageFileToNotes(file, 64, selectedMood);
 
     setNotes(result.notes);
     setMood(result.mood);
@@ -28,7 +29,9 @@ export default function UploadScreen({ onMelodyGenerated }) {
 
   return (
     <div className="screen">
-      {stage === "intro" && <IntroStage next={() => setStage("upload")} />}
+      {stage === "intro" && (
+        <IntroStage next={() => setStage("upload")} />
+      )}
 
       {stage === "upload" && (
         <UploadStage
@@ -44,7 +47,7 @@ export default function UploadScreen({ onMelodyGenerated }) {
         <MoodStage
           onSelect={(choice) => {
             setMood(choice);
-            generate();
+            generate(choice);
           }}
         />
       )}
