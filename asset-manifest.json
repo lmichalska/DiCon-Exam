@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/DiCon-Exam/static/js/main.38f7c769.js",
+    "main.css": "/DiCon-Exam/static/css/main.c0063d9d.css",
+    "main.js": "/DiCon-Exam/static/js/main.b0ba7e9c.js",
     "index.html": "/DiCon-Exam/index.html",
-    "main.38f7c769.js.map": "/DiCon-Exam/static/js/main.38f7c769.js.map"
+    "main.c0063d9d.css.map": "/DiCon-Exam/static/css/main.c0063d9d.css.map",
+    "main.b0ba7e9c.js.map": "/DiCon-Exam/static/js/main.b0ba7e9c.js.map"
   },
   "entrypoints": [
-    "static/js/main.38f7c769.js"
+    "static/css/main.c0063d9d.css",
+    "static/js/main.b0ba7e9c.js"
   ]
 }
