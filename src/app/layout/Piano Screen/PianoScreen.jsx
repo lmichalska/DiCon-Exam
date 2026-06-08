@@ -15,6 +15,12 @@ export default function PianoScreen({
   audioCtxRef,
   onBack,
 }) {
+  console.log(melody,
+    imageMood,
+    tempo,
+    setTempo,
+    audioCtxRef,
+    onBack)
   const [mode, setMode] = useState("autoplay");
   const [isRunning, setIsRunning] = useState(false);
   const [currentStep, setCurrentStep] = useState(-1);
