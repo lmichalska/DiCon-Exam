@@ -302,9 +302,6 @@ export default function PianoScreen({
             {isRunning ? "■  stop" : mode === "autoplay" ? "▶  play" : "♩  start"}
           </button>
 
-          {/* Space shortcut hint */}
-          <span style={{ fontSize: 10, color: "#2e2040", letterSpacing: "0.05em" }}>Press space</span>
-
           {isRunning && <MetronomeDots beat={beat} />}
 
           {/* Mute metronome — only in practice mode */}

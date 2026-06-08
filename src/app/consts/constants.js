@@ -44,3 +44,4 @@ export const TEMPO_MAX = 150;
   
 export const LETTERS = ["C","D","E","F","G","A","B"];
 export const SHARPS  = ["C#","D#","","F#","G#","A#",""];
+export const MOODS = ["peaceful", "nostalgic", "happy", "dreamy"];

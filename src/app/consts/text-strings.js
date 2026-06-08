@@ -4,6 +4,10 @@ export const STRINGS = {
      MOOD:"Mood",
      MEMORY_IS_READY:"Your memory is alive!",
      DESCRIBE_FEELING:"Describe the feeling of your memory in one word",
-     WAITING_TEXT:"Weaving your memory..."
+     WAITING_TEXT:"Weaving your memory...",
+     TITLE:"Your memory,",
+     START:"Begin",
+     SUB_TITLE:"your melody",
+     DESCRIPTION:"Let's turn a moment into sound."
     }
   ;

@@ -1,17 +1,17 @@
 import React from "react";
+import { STRINGS } from "../../../consts/text-strings";
 
 export default function IntroStage({ next }) {
   return (
     <>
       <h1 className="title">
-        Your memory,
+        {STRINGS.TITLE}
         <br />
-        your melody
+        {STRINGS.SUB_TITLE}
       </h1>
 
-      <p>Let's turn a moment into sound.</p>
-
-      <button onClick={next}>Begin</button>
+      <p>{STRINGS.DESCRIPTION}</p>
+      <button onClick={next}>{STRINGS.START}</button>
     </>
   );
 }
