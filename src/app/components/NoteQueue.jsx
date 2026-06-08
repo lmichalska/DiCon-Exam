@@ -1,5 +1,4 @@
 import React from "react";
-import { NOTES } from "../consts/constants";
 
 export default function NoteQueue({ melody, currentStep, mode }) {
   if (!melody) return null;

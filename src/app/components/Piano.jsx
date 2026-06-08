@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { NOTES, BASE_OCTAVE, WHITE_KEY_W } from "../consts/constants";
-import { buildMaps, getVisibleNotes, blackKeyLeft, createPianoTone } from "../functions/utils";
+import { buildMaps, getVisibleNotes, blackKeyLeft, createPianoTone } from "../utils/functions";
 import PianoKey from "./PianoKey";
 
 export default function Piano({ melody, currentStep, onNotePressed, audioCtxRef, octaveOffset }) {

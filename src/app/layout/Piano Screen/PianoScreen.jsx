@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { BASE_OCTAVE, TEMPO_MIN, TEMPO_MAX } from "../../consts/constants";
-import { createPianoTone, createMetronomeTick, buildMaps } from "../../functions/utils";
+import { createPianoTone, createMetronomeTick, buildMaps } from "../../utils/functions";
 import Piano from "../../components/Piano";
 import NoteQueue from "../../components/NoteQueue";
 import MelodyBar from "../../components/MelodyBar";

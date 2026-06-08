@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { imageFileToNotes } from "../../functions/utils";
+import { imageFileToNotes } from "../../utils/functions";
 import GeneratingStage from "./stages/GeneratingStage";
 import IntroStage from "./stages/IntroStage";
 import MoodStage from "./stages/MoodStage";

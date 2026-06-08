@@ -6,7 +6,7 @@ export function useAudioContext() {
   // Initialize audio context immediately on hook mount
   useEffect(() => {
     if (!audioCtxRef.current) {
-      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      audioCtxRef.current = new (window.AudioContext || window.AudioContext)();
       console.log("Audio context initialized in hook:", audioCtxRef.current);
     }
   }, []);
