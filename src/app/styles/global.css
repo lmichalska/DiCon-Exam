@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "FancyFont";
+    src: url("../../../public/assets/fonts/PinyonScript-Regular.ttf") format("truetype");
+  }
+
 body {
     margin:0;
     background:
@@ -6,7 +11,6 @@ body {
       var(--text-main);
     font-family:
       var(--font-main);
-  
   }
   
   
@@ -19,6 +23,9 @@ body {
   
   }
   
+  h1, h2, h3 {
+    font-family: "FancyFont";
+  }
   
   .card {
     background:
