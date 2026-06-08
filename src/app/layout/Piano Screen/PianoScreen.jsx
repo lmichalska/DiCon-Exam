@@ -1,11 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { BASE_OCTAVE, TEMPO_MIN, TEMPO_MAX } from "../consts/constants";
-import { createPianoTone, createMetronomeTick, buildMaps } from "../functions/utils";
-import Piano from "../components/Piano";
-import NoteQueue from "../components/NoteQueue";
-import MelodyBar from "../components/MelodyBar";
-import MetronomeDots from "../components/MetronomeDots";
-import KeyboardLegend from "../components/KeyboardLegend";
+import { BASE_OCTAVE, TEMPO_MIN, TEMPO_MAX } from "../../consts/constants";
+import { createPianoTone, createMetronomeTick, buildMaps } from "../../functions/utils";
+import Piano from "../../components/Piano";
+import NoteQueue from "../../components/NoteQueue";
+import MelodyBar from "../../components/MelodyBar";
+import MetronomeDots from "../../components/MetronomeDots";
+import KeyboardLegend from "../../components/KeyboardLegend";
 
 export default function PianoScreen({
   melody,
@@ -169,7 +169,7 @@ export default function PianoScreen({
 
       const ctx = audioCtxRef.current;
       if (ctx) {
-        const NOTES = require("../consts/constants").NOTES;
+        const NOTES = require("../../consts/constants").NOTES;
         const noteData = NOTES[noteIdx];
         if (noteData) {
           createPianoTone(ctx, noteData.freq);

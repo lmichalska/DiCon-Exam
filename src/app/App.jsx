@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import UploadScreen from "./layout/UploadScreen";
-import PianoScreen from "./layout/PianoScreen";
+import React, { useState } from "react";
+import UploadScreen from "./layout/Upload Screen/UploadScreen";
+import PianoScreen from "./layout/Piano Screen/PianoScreen";
 import { useAudioContext } from "./hooks/useAudioContext";
 
 export default function App() {

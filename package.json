@@ -2,7 +2,7 @@
   "name": "dicon-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lmichalska.github.io/DiCon-Interactive-Design/",
+  "homepage": "https://lmichalska.github.io/DiCon-Exam/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
