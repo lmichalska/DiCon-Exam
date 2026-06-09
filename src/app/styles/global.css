@@ -1,64 +1,45 @@
 @font-face {
-    font-family: "FancyFont";
-    src: url("../../../public/assets/fonts/PinyonScript-Regular.ttf") format("truetype");
-  }
+  font-family: "FancyFont";
+  src: url("../../../public/assets/fonts/CinzeldecorativeRegular-qmzq.ttf")
+    format("truetype");
+}
 
 body {
-    margin:0;
-    background:
-      var(--bg-gradient);
-    color:
-      var(--text-main);
-    font-family:
-      var(--font-main);
-  }
-  
-  
-  .screen {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-  
-  }
-  
-  h1, h2, h3 {
-    font-family: "FancyFont";
-  }
-  
-  .card {
-    background:
-      var(--glass-bg);
-    border:
-      1px solid var(--glass-border);
-    backdrop-filter:
-      var(--glass-blur);
-    border-radius:
-      var(--radius-md);
-    box-shadow:
-      var(--shadow-soft);
-    padding:
-      var(--space-lg);
-  
-  }
-  
-  
-  button {
-    background:
-      linear-gradient(
-        90deg,
-        var(--purple),
-        var(--pink)
-      );
-  
-    border:none;
-    border-radius:
-      var(--radius-pill);
-    color:white;
-    padding:
-      12px 35px;
-    box-shadow:
-      var(--shadow-purple);
-  
-  }
+  margin: 0;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  font-family: var(--font-main);
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "FancyFont";
+}
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-lg);
+}
+
+button {
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+
+  border: none;
+  border-radius: var(--radius-pill);
+  color: white;
+  padding: 12px 35px;
+  box-shadow: var(--shadow-purple);
+}
