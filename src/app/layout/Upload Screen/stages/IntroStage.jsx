@@ -1,5 +1,6 @@
 import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
+import { GlassButton } from "../../../components/LiquidGlassWrapper";
 
 export default function IntroStage({ next }) {
   return (
@@ -11,7 +12,7 @@ export default function IntroStage({ next }) {
       </h1>
 
       <p>{STRINGS.DESCRIPTION}</p>
-      <button onClick={next}>{STRINGS.START}</button>
+      <GlassButton onClick={next}>{STRINGS.START}</GlassButton>
     </>
   );
 }
