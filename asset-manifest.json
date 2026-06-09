@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DiCon-Exam/static/css/main.28c1b13c.css",
+    "main.css": "/DiCon-Exam/static/css/main.e049381c.css",
     "main.js": "/DiCon-Exam/static/js/main.10e1d790.js",
     "static/media/Urbanist-VariableFont_wght.ttf": "/DiCon-Exam/static/media/Urbanist-VariableFont_wght.1eb257ce505ea2fd4fd4.ttf",
     "static/media/CinzeldecorativeRegular-qmzq.ttf": "/DiCon-Exam/static/media/CinzeldecorativeRegular-qmzq.7cb7248c74e58e185be6.ttf",
     "index.html": "/DiCon-Exam/index.html",
-    "main.28c1b13c.css.map": "/DiCon-Exam/static/css/main.28c1b13c.css.map",
+    "main.e049381c.css.map": "/DiCon-Exam/static/css/main.e049381c.css.map",
     "main.10e1d790.js.map": "/DiCon-Exam/static/js/main.10e1d790.js.map"
   },
   "entrypoints": [
-    "static/css/main.28c1b13c.css",
+    "static/css/main.e049381c.css",
     "static/js/main.10e1d790.js"
   ]
 }
