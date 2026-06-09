@@ -1,5 +1,6 @@
 import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
+import { GlassCard } from "../../../components/LiquidGlassWrapper";
 
 export default function UploadStage({ file, onUpload }) {
   function change(e) {
@@ -11,10 +12,10 @@ export default function UploadStage({ file, onUpload }) {
   }
 
   return (
-    <div className="card">
+    <GlassCard>
       <h2>{STRINGS.UPLOAD_SCREEN_TEXT}</h2>
 
       <input type="file" accept="image/*" onChange={change} />
-    </div>
+    </GlassCard>
   );
 }

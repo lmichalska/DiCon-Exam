@@ -1,10 +1,10 @@
 import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
-import { GlassButton } from "../../../components/LiquidGlassWrapper";
+import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
 export default function IntroStage({ next }) {
   return (
-    <>
+    <GlassCard>
       <h1 className="title">
         {STRINGS.TITLE}
         <br />
@@ -13,6 +13,6 @@ export default function IntroStage({ next }) {
 
       <p>{STRINGS.DESCRIPTION}</p>
       <GlassButton onClick={next}>{STRINGS.START}</GlassButton>
-    </>
+    </GlassCard>
   );
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
 import { MOODS } from "../../../consts/constants";
+import { GlassCard } from "../../../components/LiquidGlassWrapper";
 
 export default function MoodStage({ onSelect }) {
   return (
-    <>
+    <GlassCard>
       <h1>{STRINGS.DESCRIBE_FEELING}</h1>
 
       <div>
@@ -14,6 +15,6 @@ export default function MoodStage({ onSelect }) {
           </button>
         ))}
       </div>
-    </>
+    </ GlassCard>
   );
 }

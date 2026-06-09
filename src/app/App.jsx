@@ -6,6 +6,7 @@ import { useAudioContext } from "./utils/useAudioContext";
 export default function App() {
   const [melody, setMelody] = useState(null);
   const [imageMood, setImageMood] = useState(null);
+  const [img, setImg] = useState(null);
   const [tempo, setTempo] = useState(100);
   const { audioCtxRef } = useAudioContext();
 
@@ -24,15 +25,15 @@ export default function App() {
   return (
     <>
       {!melody ? (
-        <UploadScreen onMelodyGenerated={handleMelodyGenerated} />
+        <UploadScreen onMelodyGenerated={handleMelodyGenerated} setImg={(img)=>setImg(img)}/>
       ) : (
         <PianoScreen
           melody={melody}
           imageMood={imageMood}
           tempo={tempo}
-          setTempo={setTempo}
           audioCtxRef={audioCtxRef}
           onBack={handleBack}
+          img={img}
         />
       )}
     </>

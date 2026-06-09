@@ -3,7 +3,7 @@ import '../styles/liquidGlass.css';
 
 export function GlassCard({ children = null, className = '', ...props }) {
   return (
-    <div className={`liquid-glass glass-card ${className}`} {...props}>
+    <div className={`card ${className}`} {...props}>
       {children}
     </div>
   );

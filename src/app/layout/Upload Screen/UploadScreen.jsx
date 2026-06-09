@@ -7,7 +7,7 @@ import MoodStage from "./stages/MoodStage";
 import UploadStage from "./stages/UploadStage";
 import ProceedStage from "./stages/ProceedStage";
 
-export default function UploadScreen({ onMelodyGenerated }) {
+export default function UploadScreen({ onMelodyGenerated, setImg }) {
   const [stage, setStage] = useState("intro");
 
   const [file, setFile] = useState(null);
@@ -38,6 +38,7 @@ export default function UploadScreen({ onMelodyGenerated }) {
           file={file}
           onUpload={(img) => {
             setFile(img);
+            setImg(img);
             setStage("mood");
           }}
         />
