@@ -18,6 +18,8 @@ import Piano from "../../components/Piano";
 import NoteQueue from "../../components/NoteQueue";
 import MetronomeDots from "../../components/MetronomeDots";
 import KeyboardLegend from "../../components/KeyboardLegend";
+import { STRINGS } from "../../consts/text-strings";
+import { GlassButton } from "../../components/LiquidGlassWrapper";
 
 export default function PianoScreen({
   melody,
@@ -269,52 +271,41 @@ export default function PianoScreen({
       {/* UI LAYER */}
       <div style={{ position: "relative", zIndex: 2, padding: 12 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button className="glass-btn" onClick={onBack}>
+          <GlassButton onClick={onBack}>
             <ChevronLeft size={16} />
-            Back
-          </button>
+            {STRINGS.BACK}
+          </GlassButton>
 
-          <button className="glass-btn" onClick={handleStart}>
+          <GlassButton onClick={handleStart}>
             {isRunning ? (
               <>
                 <Pause size={16} />
-                Stop
+                {STRINGS.STOP}
               </>
             ) : (
               <>
                 <Play size={16} />
-                Start
+                {STRINGS.PLAY}
               </>
             )}
-          </button>
+          </GlassButton>
 
-          <button
-            className={`glass-btn ${mode === "autoplay" ? "active" : ""}`}
-            onClick={() => setMode("autoplay")}
-          >
-            Auto
-          </button>
-
-          <button
-            className={`glass-btn ${mode === "practice" ? "active" : ""}`}
-            onClick={() => setMode("practice")}
-          >
-            Practice
-          </button>
-
-          <button
-            className="glass-btn"
-            onClick={() => setMetroMuted((m) => !m)}
-          >
+          {mode === "autoplay" ? (
+            <GlassButton onClick={() => setMode("practice")}>
+              {STRINGS.AUTOPLAY}
+            </GlassButton>
+          ) : (
+            <GlassButton onClick={() => setMode("autoplay")}>
+              {STRINGS.PRACTICE}
+            </GlassButton>
+          )}
+          <GlassButton onClick={() => setMetroMuted((m) => !m)}>
             {metroMuted ? <BellOff size={16} /> : <Bell size={16} />}
-          </button>
+          </GlassButton>
 
-          <button
-            className="glass-btn"
-            onClick={() => setShowLegend((v) => !v)}
-          >
-            Info
-          </button>
+          <GlassButton onClick={() => setShowLegend((v) => !v)}>
+            {STRINGS.INFO}
+          </GlassButton>
 
           {accuracy !== null && (
             <div>

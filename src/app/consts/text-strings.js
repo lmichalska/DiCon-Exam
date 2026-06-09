@@ -12,4 +12,10 @@ export const STRINGS = {
   INTRO_BODYTEXT: "Upload a picture and let us transform your memory into a melody.",
   INTRO_LEADTEXT: "How nice it would be to experience the past once again",
   PROCEED: "Proceed",
+  AUTOPLAY: "Autoplay",
+  PRACTICE: "Practice",
+  PLAY: "Play",
+  STOP: "Stop",
+  BACK: "Back",
+  INFO: "Info",
 };
