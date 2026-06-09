@@ -5,12 +5,7 @@ export default function NoteQueue({ melody, currentStep, mode }) {
   const slice = melody.slice(Math.max(0, currentStep), Math.max(0, currentStep) + 10);
   return (
     <div style={{ display: "flex", gap: 5, alignItems: "center", height: 56, overflow: "hidden" }}>
-      {currentStep < 0 ? (
-        <span style={{ fontSize: 12, color: "#3a2a5a" }}>
-          {mode === "practice" ? "press start to begin" : "press play to hear melody"}
-        </span>
-      ) : (
-        slice.map((note, i) => {
+      { slice.map((note, i) => {
           const isNext = i === 0;
           return (
             <div
@@ -50,7 +45,7 @@ export default function NoteQueue({ melody, currentStep, mode }) {
             </div>
           );
         })
-      )}
+      }
     </div>
   );
 }

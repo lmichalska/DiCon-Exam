@@ -5,12 +5,10 @@ export const STRINGS = {
   MEMORY_IS_READY: "Your memory is alive!",
   DESCRIBE_FEELING: "Describe the feeling of your memory in one word",
   WAITING_TEXT: "Weaving your memory...",
-
   TITLE: "WELCOME",
-
   SUB_TITLE: "TO YOUR LIVING MEMORIES",
-
   START: "Begin your journey",
-
-  DESCRIPTION: "Let's turn a moment into sound."
+  DESCRIPTION: "Let's turn a moment into sound.",
+  INTRO_BODYTEXT: "Upload a picture and let us transform your memory into a melody.",
+  INTRO_LEADTEXT: "How nice it would be to experience the past once again",
 };

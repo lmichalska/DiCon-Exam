@@ -6,13 +6,7 @@ import React, {
   useMemo,
 } from "react";
 
-import {
-  ChevronLeft,
-  Play,
-  Pause,
-  Bell,
-  BellOff
-} from "lucide-react";
+import { ChevronLeft, Play, Pause, Bell, BellOff } from "lucide-react";
 
 import { BASE_OCTAVE } from "../../consts/constants";
 import {
@@ -24,8 +18,6 @@ import Piano from "../../components/Piano";
 import NoteQueue from "../../components/NoteQueue";
 import MetronomeDots from "../../components/MetronomeDots";
 import KeyboardLegend from "../../components/KeyboardLegend";
-
-
 
 export default function PianoScreen({
   melody,
@@ -100,14 +92,14 @@ export default function PianoScreen({
         return;
       }
 
+      const note = melody[step];
       setCurrentStep(step);
-      createPianoTone(ctx, melody[step].freq, 0.45);
-
+      createPianoTone(ctx, note.freq, note.duration || 0.8);
       beatRef.current += 1;
       setBeat(beatRef.current);
-
-      stepRef.current = step + 1;
-      timerRef.current = setTimeout(tick, beatMs);
+      stepRef.current++;
+      const delay = (note.duration || 0.8) * 1000;
+      timerRef.current = setTimeout(tick, delay);
     }
 
     tick();
@@ -276,60 +268,60 @@ export default function PianoScreen({
 
       {/* UI LAYER */}
       <div style={{ position: "relative", zIndex: 2, padding: 12 }}>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-  <button className="glass-btn" onClick={onBack}>
-    <ChevronLeft size={16} />
-    Back
-  </button>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <button className="glass-btn" onClick={onBack}>
+            <ChevronLeft size={16} />
+            Back
+          </button>
 
-  <button className="glass-btn" onClick={handleStart}>
-    {isRunning ? (
-      <>
-        <Pause size={16} />
-        Stop
-      </>
-    ) : (
-      <>
-        <Play size={16} />
-        Start
-      </>
-    )}
-  </button>
+          <button className="glass-btn" onClick={handleStart}>
+            {isRunning ? (
+              <>
+                <Pause size={16} />
+                Stop
+              </>
+            ) : (
+              <>
+                <Play size={16} />
+                Start
+              </>
+            )}
+          </button>
 
-  <button
-    className={`glass-btn ${mode === "autoplay" ? "active" : ""}`}
-    onClick={() => setMode("autoplay")}
-  >
-    Auto
-  </button>
+          <button
+            className={`glass-btn ${mode === "autoplay" ? "active" : ""}`}
+            onClick={() => setMode("autoplay")}
+          >
+            Auto
+          </button>
 
-  <button
-    className={`glass-btn ${mode === "practice" ? "active" : ""}`}
-    onClick={() => setMode("practice")}
-  >
-    Practice
-  </button>
+          <button
+            className={`glass-btn ${mode === "practice" ? "active" : ""}`}
+            onClick={() => setMode("practice")}
+          >
+            Practice
+          </button>
 
-  <button
-    className="glass-btn"
-    onClick={() => setMetroMuted((m) => !m)}
-  >
-    {metroMuted ? <BellOff size={16} /> : <Bell size={16} />}
-  </button>
+          <button
+            className="glass-btn"
+            onClick={() => setMetroMuted((m) => !m)}
+          >
+            {metroMuted ? <BellOff size={16} /> : <Bell size={16} />}
+          </button>
 
-  <button
-    className="glass-btn"
-    onClick={() => setShowLegend((v) => !v)}
-  >
-    Info
-  </button>
+          <button
+            className="glass-btn"
+            onClick={() => setShowLegend((v) => !v)}
+          >
+            Info
+          </button>
 
-  {accuracy !== null && (
-    <div>
-      {accuracy}% · {practiceScore.hit}/{practiceScore.total}
-    </div>
-  )}
-</div>
+          {accuracy !== null && (
+            <div>
+              {accuracy}% · {practiceScore.hit}/{practiceScore.total}
+            </div>
+          )}
+        </div>
 
         <div style={{ marginTop: 10 }}>
           <NoteQueue melody={melody} currentStep={currentStep} mode={mode} />
@@ -358,7 +350,6 @@ export default function PianoScreen({
 
       {/* PIANO LAYER */}
       <div
-        
         style={{
           position: "absolute",
           bottom: "2%",
@@ -370,7 +361,6 @@ export default function PianoScreen({
           transform: "scale(1.8)",
           transformOrigin: "bottom center",
         }}
-      
       >
         <Piano
           melody={melody}
