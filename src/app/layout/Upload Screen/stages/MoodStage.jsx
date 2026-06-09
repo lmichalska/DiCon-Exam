@@ -1,18 +1,16 @@
 import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
 import { MOODS } from "../../../consts/constants";
-import { GlassCard } from "../../../components/LiquidGlassWrapper";
+import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
 export default function MoodStage({ onSelect }) {
   return (
-    <GlassCard>
+    <GlassCard className="max-w-[400px]">
       <h1>{STRINGS.DESCRIBE_FEELING}</h1>
 
-      <div>
+      <div className="flex gap-[1rem] flex-wrap">
         {MOODS.map((m) => (
-          <button key={m} onClick={() => onSelect(m)}>
-            {m}
-          </button>
+      <GlassButton key={m} onClick={() => onSelect(m)}>{m}</GlassButton>
         ))}
       </div>
     </ GlassCard>
