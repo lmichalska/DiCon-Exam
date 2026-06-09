@@ -3,12 +3,14 @@
     /* Backgrounds */
     --bg-main: #050314;
     --bg-gradient:
-      radial-gradient(
-        circle at top left,
-        #8b164f,
-        #2b0738 45%,
-        #001b2b
-      );
+  linear-gradient(
+    90deg,
+    #ff9f00 0%,
+    #dc0000 50%,
+    #670010 75%,
+    #600036 87.5%,
+    #001b32 100%
+  );
   
   
     /* Colors */
