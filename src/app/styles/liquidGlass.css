@@ -23,10 +23,10 @@
   border-radius: inherit;
 }
 
-/* Button variant */
 .glass-btn {
   border-radius: 50px;
   padding: 10px 24px;
+  width: fit-content;
   font-size: 14px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.92);
