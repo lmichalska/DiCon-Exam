@@ -1,13 +1,16 @@
 export const STRINGS = {
-     UPLOAD_SCREEN_TEXT:"Upload your memory",
-     PLAY_MELODY:"Play melody",
-     MOOD:"Mood",
-     MEMORY_IS_READY:"Your memory is alive!",
-     DESCRIBE_FEELING:"Describe the feeling of your memory in one word",
-     WAITING_TEXT:"Weaving your memory...",
-     TITLE:"Your memory,",
-     START:"Begin",
-     SUB_TITLE:"your melody",
-     DESCRIPTION:"Let's turn a moment into sound."
-    }
-  ;
+  UPLOAD_SCREEN_TEXT: "Upload your memory",
+  PLAY_MELODY: "Play melody",
+  MOOD: "Mood",
+  MEMORY_IS_READY: "Your memory is alive!",
+  DESCRIBE_FEELING: "Describe the feeling of your memory in one word",
+  WAITING_TEXT: "Weaving your memory...",
+
+  TITLE: "WELCOME",
+
+  SUB_TITLE: "TO YOUR LIVING MEMORIES",
+
+  START: "Begin your journey",
+
+  DESCRIPTION: "Let's turn a moment into sound."
+};
