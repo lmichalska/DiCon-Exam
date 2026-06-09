@@ -358,14 +358,19 @@ export default function PianoScreen({
 
       {/* PIANO LAYER */}
       <div
+        
         style={{
           position: "absolute",
-          bottom: "5%",
-          left: "5%",
-          right: "5%",
-          transform: "translateY(10%)",
+          bottom: "2%",
+          left: 0,
+          right: 0,
           zIndex: 3,
+          display: "flex",
+          justifyContent: "center",
+          transform: "scale(1.8)",
+          transformOrigin: "bottom center",
         }}
+      
       >
         <Piano
           melody={melody}
