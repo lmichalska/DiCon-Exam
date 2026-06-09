@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/DiCon-Exam/static/css/main.c0063d9d.css",
-    "main.js": "/DiCon-Exam/static/js/main.b0ba7e9c.js",
+    "main.css": "/DiCon-Exam/static/css/main.d07b1313.css",
+    "main.js": "/DiCon-Exam/static/js/main.070a039c.js",
+    "static/media/Urbanist-VariableFont_wght.ttf": "/DiCon-Exam/static/media/Urbanist-VariableFont_wght.1eb257ce505ea2fd4fd4.ttf",
+    "static/media/CinzeldecorativeRegular-qmzq.ttf": "/DiCon-Exam/static/media/CinzeldecorativeRegular-qmzq.7cb7248c74e58e185be6.ttf",
     "index.html": "/DiCon-Exam/index.html",
-    "main.c0063d9d.css.map": "/DiCon-Exam/static/css/main.c0063d9d.css.map",
-    "main.b0ba7e9c.js.map": "/DiCon-Exam/static/js/main.b0ba7e9c.js.map"
+    "main.d07b1313.css.map": "/DiCon-Exam/static/css/main.d07b1313.css.map",
+    "main.070a039c.js.map": "/DiCon-Exam/static/js/main.070a039c.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0063d9d.css",
-    "static/js/main.b0ba7e9c.js"
+    "static/css/main.d07b1313.css",
+    "static/js/main.070a039c.js"
   ]
 }
