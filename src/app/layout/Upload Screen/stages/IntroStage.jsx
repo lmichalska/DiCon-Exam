@@ -4,15 +4,19 @@ import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
 export default function IntroStage({ next }) {
   return (
-    <GlassCard>
+    <div className="column-gap">
       <h1 className="title">
         {STRINGS.TITLE}
         <br />
         {STRINGS.SUB_TITLE}
       </h1>
+      <GlassCard>
+        <p>{STRINGS.LEAD_TEXT}</p>
 
-      <p>{STRINGS.DESCRIPTION}</p>
+        <p>{STRINGS.DESCRIPTION}</p>
+      </GlassCard>
+
       <GlassButton onClick={next}>{STRINGS.START}</GlassButton>
-    </GlassCard>
+    </div>
   );
 }

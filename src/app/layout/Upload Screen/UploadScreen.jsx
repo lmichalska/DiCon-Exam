@@ -6,6 +6,7 @@ import IntroStage from "./stages/IntroStage";
 import MoodStage from "./stages/MoodStage";
 import UploadStage from "./stages/UploadStage";
 import ProceedStage from "./stages/ProceedStage";
+import { Particles } from "../../components/Particles";
 
 export default function UploadScreen({ onMelodyGenerated, setImg }) {
   const [stage, setStage] = useState("intro");
@@ -29,6 +30,7 @@ export default function UploadScreen({ onMelodyGenerated, setImg }) {
 
   return (
     <div className="screen">
+      <Particles />
       {stage === "intro" && (
         <IntroStage next={() => setStage("upload")} />
       )}
