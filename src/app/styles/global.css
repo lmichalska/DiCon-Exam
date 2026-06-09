@@ -3,6 +3,11 @@
   src: url("../../../public/assets/fonts/CinzeldecorativeRegular-qmzq.ttf")
     format("truetype");
 }
+@font-face {
+  font-family: "BodyFont";
+  src: url("../../../public/assets/fonts/Urbanist-VariableFont_wght.ttf")
+    format("truetype");
+}
 
 body {
   margin: 0;
@@ -23,6 +28,11 @@ h1,
 h2,
 h3 {
   font-family: "FancyFont";
+}
+
+p,
+span {
+  font-family: "BodyFont";
 }
 
 .card {
