@@ -7,9 +7,11 @@ export default function UploadStage({ file, onUpload }) {
     file ? URL.createObjectURL(file) : null
   );
   const [dragging, setDragging] = useState(false);
+  const [img, setImg] = useState(null);
 
   function handleFile(img) {
     if (!img || !img.type.startsWith("image/")) return;
+    setImg(img);
     const url = URL.createObjectURL(img);
     setPreview(url);
   }
@@ -96,9 +98,9 @@ export default function UploadStage({ file, onUpload }) {
         </label>
       </GlassCard>
 
-      <GlassButton onClick={() => preview && onUpload(file)}>
+     {preview && <GlassButton onClick={() => onUpload(img)}>
         {STRINGS.PROCEED}
-      </GlassButton>
+      </GlassButton>}
     </>
   );
 }
