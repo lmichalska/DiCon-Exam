@@ -11,4 +11,5 @@ export const STRINGS = {
   DESCRIPTION: "Let's turn a moment into sound.",
   INTRO_BODYTEXT: "Upload a picture and let us transform your memory into a melody.",
   INTRO_LEADTEXT: "How nice it would be to experience the past once again",
+  PROCEED: "Proceed",
 };
