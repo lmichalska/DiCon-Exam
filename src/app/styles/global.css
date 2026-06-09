@@ -43,13 +43,3 @@ span {
   box-shadow: var(--shadow-soft);
   padding: var(--space-lg);
 }
-
-button {
-  background: linear-gradient(90deg, var(--purple), var(--pink));
-
-  border: none;
-  border-radius: var(--radius-pill);
-  color: white;
-  padding: 12px 35px;
-  box-shadow: var(--shadow-purple);
-}
