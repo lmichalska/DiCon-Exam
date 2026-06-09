@@ -1,10 +1,31 @@
-import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  useMemo,
+} from "react";
+
+import {
+  ChevronLeft,
+  Play,
+  Pause,
+  Bell,
+  BellOff
+} from "lucide-react";
+
 import { BASE_OCTAVE } from "../../consts/constants";
-import { createPianoTone, createMetronomeTick, buildMaps } from "../../utils/functions";
+import {
+  createPianoTone,
+  createMetronomeTick,
+  buildMaps,
+} from "../../utils/functions";
 import Piano from "../../components/Piano";
 import NoteQueue from "../../components/NoteQueue";
 import MetronomeDots from "../../components/MetronomeDots";
 import KeyboardLegend from "../../components/KeyboardLegend";
+
+
 
 export default function PianoScreen({
   melody,
@@ -12,7 +33,7 @@ export default function PianoScreen({
   tempo,
   audioCtxRef,
   onBack,
-  img
+  img,
 }) {
   const [mode, setMode] = useState("autoplay");
   const [isRunning, setIsRunning] = useState(false);
@@ -135,7 +156,7 @@ export default function PianoScreen({
 
       setPracticeScore((s) => ({
         hit: s.hit + (correct ? 1 : 0),
-        total: s.total + 1
+        total: s.total + 1,
       }));
 
       if (correct) {
@@ -241,7 +262,7 @@ export default function PianoScreen({
         backgroundImage: bgUrl ? `url(${bgUrl})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* BG overlay for readability */}
@@ -249,34 +270,66 @@ export default function PianoScreen({
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.35)"
+          background: "rgba(0,0,0,0.35)",
         }}
       />
 
       {/* UI LAYER */}
       <div style={{ position: "relative", zIndex: 2, padding: 12 }}>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button onClick={() => setMode("autoplay")}>▶ auto</button>
-          <button onClick={() => setMode("practice")}>♩ practice</button>
+      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+  <button className="glass-btn" onClick={onBack}>
+    <ChevronLeft size={16} />
+    Back
+  </button>
 
-          <button onClick={handleStart}>
-            {isRunning ? "stop" : "start"}
-          </button>
+  <button className="glass-btn" onClick={handleStart}>
+    {isRunning ? (
+      <>
+        <Pause size={16} />
+        Stop
+      </>
+    ) : (
+      <>
+        <Play size={16} />
+        Start
+      </>
+    )}
+  </button>
 
-          <button onClick={() => setMetroMuted((m) => !m)}>
-            {metroMuted ? "🔇" : "🔔"}
-          </button>
+  <button
+    className={`glass-btn ${mode === "autoplay" ? "active" : ""}`}
+    onClick={() => setMode("autoplay")}
+  >
+    Auto
+  </button>
 
-          <button onClick={onBack}>← back</button>
+  <button
+    className={`glass-btn ${mode === "practice" ? "active" : ""}`}
+    onClick={() => setMode("practice")}
+  >
+    Practice
+  </button>
 
-          <button onClick={() => setShowLegend((v) => !v)}>ℹ info</button>
+  <button
+    className="glass-btn"
+    onClick={() => setMetroMuted((m) => !m)}
+  >
+    {metroMuted ? <BellOff size={16} /> : <Bell size={16} />}
+  </button>
 
-          {accuracy !== null && (
-            <div>
-              {accuracy}% · {practiceScore.hit}/{practiceScore.total}
-            </div>
-          )}
-        </div>
+  <button
+    className="glass-btn"
+    onClick={() => setShowLegend((v) => !v)}
+  >
+    Info
+  </button>
+
+  {accuracy !== null && (
+    <div>
+      {accuracy}% · {practiceScore.hit}/{practiceScore.total}
+    </div>
+  )}
+</div>
 
         <div style={{ marginTop: 10 }}>
           <NoteQueue melody={melody} currentStep={currentStep} mode={mode} />
@@ -295,7 +348,7 @@ export default function PianoScreen({
               padding: 12,
               borderRadius: 10,
               border: "1px solid #333",
-              zIndex: 50
+              zIndex: 50,
             }}
           >
             <KeyboardLegend octaveOffset={octaveOffset} />
@@ -311,7 +364,7 @@ export default function PianoScreen({
           left: "5%",
           right: "5%",
           transform: "translateY(10%)",
-          zIndex: 3
+          zIndex: 3,
         }}
       >
         <Piano
