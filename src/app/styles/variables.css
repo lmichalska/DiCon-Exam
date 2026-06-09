@@ -2,13 +2,19 @@
 
     /* Backgrounds */
     --bg-main: #050314;
-    --bg-gradient:
-  linear-gradient(
-    90deg,
-    #ff9f00 0%,
-    #dc0000 50%,
-    #670010 75%,
-    #600036 87.5%,
+   --bg-gradient:
+  radial-gradient(
+    circle at 40% 20%,
+    rgba(255,176,0,0.95) 0%,
+    rgba(255,106,0,0.9) 12%,
+    rgba(220,0,0,0.8) 28%,
+    rgba(103,0,16,0.5) 50%,
+    transparent 60%
+  ),
+  radial-gradient(
+    circle at center,
+    #600036 0%,
+    #2b0738 50%,
     #001b32 100%
   );
   
