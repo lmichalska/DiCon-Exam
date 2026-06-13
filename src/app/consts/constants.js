@@ -46,3 +46,5 @@ export const MOODS = [
   "peaceful", "nostalgic", "passionate", "dreamy",
   "serene", "bittersweet", "magical", "joyful"
 ];
+
+export const stages = ["intro", "upload", "mood", "generating", "proceed"];

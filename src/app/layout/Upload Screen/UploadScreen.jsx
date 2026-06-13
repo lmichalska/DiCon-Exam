@@ -7,8 +7,8 @@ import MoodStage from "./stages/MoodStage";
 import UploadStage from "./stages/UploadStage";
 import ProceedStage from "./stages/ProceedStage";
 import { Particles } from "../../components/Particles";
-import { stages } from "../../consts/pages";
 import Pagination from "../../components/Pagination";
+import { stages } from "../../consts/constants";
 
 export default function UploadScreen({ onMelodyGenerated, setImg }) {
   const [stage, setStage] = useState("intro");

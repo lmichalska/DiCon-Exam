@@ -7,7 +7,7 @@ import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 export default function MoodStage({ onSelect }) {
   return (
     <>
-      <h1>{STRINGS.DESCRIBE_FEELING}</h1>
+      <h1 style={{maxWidth: "600px", textAlign: "center"}}>{STRINGS.DESCRIBE_FEELING}</h1>
     <GlassCard className="mood-card">
 
       <div className="mood-list">

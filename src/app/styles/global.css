@@ -105,19 +105,18 @@ span {
 }
 
 .mood-card {
-  width: 400px;
-  height: 400px;
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+  width: fit-content;
+  height: fit-content;
+  pad: 2rem;
 }
 
 .mood-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 1rem;
-  flex-wrap: wrap;
-  height: 250px;
 }
 
 #particle-container {
@@ -269,4 +268,7 @@ span {
   position: absolute;
   font-size: 48px;
   color: black;
+}
+.disabled {
+  cursor: not-allowed;
 }
