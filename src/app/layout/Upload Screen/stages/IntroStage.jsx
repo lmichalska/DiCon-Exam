@@ -2,13 +2,16 @@ import React from "react";
 import { STRINGS } from "../../../consts/text-strings";
 import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
+
 export default function IntroStage({ next }) {
   return (
     <div className="screen">
       <div className="screen-content">
-        <h1 className="hero-title">{STRINGS.TITLE}</h1>
+        <div className="hero-top">
+          <h1 className="hero-title">{STRINGS.TITLE}</h1>
 
-        <div className="hero-subtitle">{STRINGS.SUB_TITLE}</div>
+          <div className="hero-subtitle">{STRINGS.SUB_TITLE}</div>
+        </div>
 
         <GlassCard className="hero-card">
           <p className="hero-card-title">{STRINGS.INTRO_LEADTEXT}</p>
@@ -25,6 +28,7 @@ export default function IntroStage({ next }) {
           <span className="pagination-dot" />
           <span className="pagination-dot" />
         </div>
+        
       </div>
     </div>
   );

@@ -18,4 +18,5 @@ export const STRINGS = {
   STOP: "Stop",
   BACK: "Back",
   INFO: "Info",
+  CONTINUE: "Continue",
 };

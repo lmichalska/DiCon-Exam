@@ -3,17 +3,23 @@ import { STRINGS } from "../../../consts/text-strings";
 import { MOODS } from "../../../consts/constants";
 import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
+
 export default function MoodStage({ onSelect }) {
   return (
     <>
       <h1>{STRINGS.DESCRIBE_FEELING}</h1>
-    <GlassCard className="max-w-[400px]">
+    <GlassCard className="mood-card">
 
-      <div className="flex gap-[1rem] flex-wrap">
+      <div className="mood-list">
         {MOODS.map((m) => (
       <GlassButton key={m} onClick={() => onSelect(m)}>{m}</GlassButton>
         ))}
       </div>
-    </ GlassCard></>
+    </ GlassCard>
+    <GlassButton className="hero-button" onClick={onSelect}>
+              {STRINGS.CONTINUE}
+            </GlassButton>
+    
+    </>
   );
 }

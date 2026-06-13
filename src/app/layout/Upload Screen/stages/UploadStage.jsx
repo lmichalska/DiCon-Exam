@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { STRINGS } from "../../../consts/text-strings";
 import { GlassButton, GlassCard } from "../../../components/LiquidGlassWrapper";
 
+
 export default function UploadStage({ file, onUpload }) {
   const [preview, setPreview] = useState(
     file ? URL.createObjectURL(file) : null
@@ -42,13 +43,14 @@ export default function UploadStage({ file, onUpload }) {
     <>
       <h2>{STRINGS.UPLOAD_SCREEN_TEXT}</h2>
 
-      <GlassCard>
+      <GlassCard className="upload-card">
         <label
           onDrop={drop}
           onDragOver={dragOver}
           onDragLeave={dragLeave}
           style={{
             width: "100%",
+            height: "100%",
             minHeight: 260,
             borderRadius: 20,
             border: dragging
@@ -98,9 +100,11 @@ export default function UploadStage({ file, onUpload }) {
         </label>
       </GlassCard>
 
-     {preview && <GlassButton onClick={() => onUpload(img)}>
-        {STRINGS.PROCEED}
-      </GlassButton>}
+      {preview && (
+        <GlassButton onClick={() => onUpload(img)}>
+          {STRINGS.PROCEED}
+        </GlassButton>
+      )}
     </>
   );
 }

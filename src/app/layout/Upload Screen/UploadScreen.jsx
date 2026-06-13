@@ -7,6 +7,8 @@ import MoodStage from "./stages/MoodStage";
 import UploadStage from "./stages/UploadStage";
 import ProceedStage from "./stages/ProceedStage";
 import { Particles } from "../../components/Particles";
+import { stages } from "../../consts/pages";
+import Pagination from "../../components/Pagination";
 
 export default function UploadScreen({ onMelodyGenerated, setImg }) {
   const [stage, setStage] = useState("intro");
@@ -31,9 +33,7 @@ export default function UploadScreen({ onMelodyGenerated, setImg }) {
   return (
     <div className="screen">
       <Particles />
-      {stage === "intro" && (
-        <IntroStage next={() => setStage("upload")} />
-      )}
+      {stage === "intro" && <IntroStage next={() => setStage("upload")} />}
 
       {stage === "upload" && (
         <UploadStage
@@ -66,6 +66,11 @@ export default function UploadScreen({ onMelodyGenerated, setImg }) {
           }}
         />
       )}
+      <Pagination
+        stages={stages}
+        currentStage={stage}
+        onChange={(nextStage) => setStage(nextStage)}
+      />
     </div>
   );
 }
