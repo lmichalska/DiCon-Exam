@@ -322,6 +322,7 @@ export default function PianoScreen({
       />
 
       <div style={{ position: "relative", zIndex: 2, padding: 12 }}>
+        <div style={{width: "100%", height: "40px", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <GlassButton onClick={onBack}>
             <ChevronLeft size={16} />
@@ -369,9 +370,9 @@ export default function PianoScreen({
 
         <div style={{ marginTop: 10 }}>
           <NoteQueue melody={melody} currentStep={currentStep} mode={mode} />
-        </div>
-
         {isRunning && mode !== "autoplay" && <MetronomeDots beat={beat} />}
+        </div>
+        </div>
 
         {showLegend && (
           <div

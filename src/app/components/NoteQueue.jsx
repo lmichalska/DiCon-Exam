@@ -4,7 +4,7 @@ export default function NoteQueue({ melody, currentStep, mode }) {
   if (!melody) return null;
   const slice = melody.slice(Math.max(0, currentStep), Math.max(0, currentStep) + 10);
   return (
-    <div style={{ display: "flex", gap: 5, alignItems: "center", height: 56, overflow: "hidden" }}>
+    <div style={{ display: "flex", gap: 5, alignItems: "center", height: 56}}>
       { slice.map((note, i) => {
           const isNext = i === 0;
           return (
