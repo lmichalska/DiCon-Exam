@@ -47,4 +47,14 @@ export const MOODS = [
   "serene", "bittersweet", "magical", "joyful"
 ];
 
+export const MOOD_AUDIO = {
+  peaceful: { tempo: 0.85, volume: 0.9, attack: 0.02, detune: 0 },
+  nostalgic: { tempo: 0.9, volume: 0.95, attack: 0.015, detune: 6 },
+  passionate: { tempo: 1.2, volume: 1.2, attack: 0.005, detune: 0 },
+  dreamy: { tempo: 0.8, volume: 0.85, attack: 0.03, detune: 10 },
+  serene: { tempo: 0.75, volume: 0.8, attack: 0.02, detune: 0 },
+  bittersweet: { tempo: 0.95, volume: 0.9, attack: 0.02, detune: 4 },
+  magical: { tempo: 1.05, volume: 1.05, attack: 0.01, detune: 2 },
+  joyful: { tempo: 1.25, volume: 1.15, attack: 0.008, detune: 0 },
+};
 export const stages = ["intro", "upload", "mood", "generating", "proceed"];

@@ -11,6 +11,7 @@ export default function ProceedStage({ image, mood, onProceed }) {
         style={{
           width: 200,
           borderRadius: "100%",
+          aspectRatio: "1/1",
         }}
       />
 

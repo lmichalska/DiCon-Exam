@@ -8,11 +8,12 @@ import React, {
 
 import { ChevronLeft, Play, Pause, Bell, BellOff } from "lucide-react";
 
-import { BASE_OCTAVE } from "../../consts/constants";
+import { BASE_OCTAVE, NOTES } from "../../consts/constants";
 import {
   createPianoTone,
   createMetronomeTick,
   buildMaps,
+  getVisibleNotes,
 } from "../../utils/functions";
 import Piano from "../../components/Piano";
 import NoteQueue from "../../components/NoteQueue";
@@ -47,6 +48,29 @@ export default function PianoScreen({
   const practiceStepRef = useRef(0);
   const heldKeys = useRef(new Set());
 
+  const visibleNotes = useMemo(() => {
+    return getVisibleNotes(octaveOffset, 21);
+  }, [octaveOffset]);
+
+  const { keyToNote } = useMemo(() => buildMaps(octaveOffset), [octaveOffset]);
+
+  const safeTempo =
+    Number.isFinite(tempo) && tempo > 0 ? tempo : 120;
+
+  const beatMs = (60 / safeTempo) * 1000;
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     metroMutedRef.current = metroMuted;
   }, [metroMuted]);
@@ -72,17 +96,18 @@ export default function PianoScreen({
 
   const startAutoplay = useCallback(() => {
     if (!melody) return;
+
     const ctx = audioCtxRef.current;
     if (!ctx) return;
 
     setIsRunning(true);
     setPracticeScore({ hit: 0, total: 0 });
+
     stepRef.current = 0;
     beatRef.current = 0;
+
     setCurrentStep(0);
     setBeat(0);
-
-    const beatMs = (60 / tempo) * 1000;
 
     function tick() {
       const step = stepRef.current;
@@ -95,13 +120,38 @@ export default function PianoScreen({
       }
 
       const note = melody[step];
+
+      const duration =
+        Number.isFinite(note.duration) && note.duration > 0
+          ? note.duration
+          : 1;
+
       setCurrentStep(step);
-      createPianoTone(ctx, note.freq, note.duration || 0.8);
+
+      const freq =
+        Number.isFinite(note.freq) && note.freq > 0
+          ? note.freq
+          : null;
+
+      if (freq) {
+        createPianoTone(
+          ctx,
+          freq,
+          (beatMs / 1000) * duration,
+          0.5,
+          note.mood || imageMood?.mood || "peaceful"
+        );
+      }
+
       beatRef.current += 1;
       setBeat(beatRef.current);
+
       stepRef.current++;
-      const delay = (note.duration || 0.8) * 1000;
-      timerRef.current = setTimeout(tick, delay);
+
+      timerRef.current = setTimeout(
+        tick,
+        Math.round(beatMs * duration)
+      );
     }
 
     tick();
@@ -114,12 +164,12 @@ export default function PianoScreen({
 
     setIsRunning(true);
     setPracticeScore({ hit: 0, total: 0 });
+
     practiceStepRef.current = 0;
     beatRef.current = 0;
+
     setCurrentStep(0);
     setBeat(0);
-
-    const beatMs = (60 / tempo) * 1000;
 
     function metroTick() {
       if (practiceStepRef.current >= melody.length) {
@@ -128,12 +178,17 @@ export default function PianoScreen({
         return;
       }
 
-      if (!metroMutedRef.current) createMetronomeTick(ctx);
+      if (!metroMutedRef.current) {
+        createMetronomeTick(ctx);
+      }
 
       beatRef.current += 1;
       setBeat(beatRef.current);
 
-      timerRef.current = setTimeout(metroTick, beatMs);
+      timerRef.current = setTimeout(
+        metroTick,
+        Math.round(beatMs)
+      );
     }
 
     metroTick();
@@ -146,8 +201,11 @@ export default function PianoScreen({
       const step = practiceStepRef.current;
       if (step >= melody.length) return;
 
-      const correct = noteName === melody[step].note;
+      const allowedNotes = visibleNotes.map(n => n.note);
 
+      const correct =
+        allowedNotes.includes(noteName) &&
+        noteName === melody[step].note;
       setPracticeScore((s) => ({
         hit: s.hit + (correct ? 1 : 0),
         total: s.total + 1,
@@ -165,7 +223,7 @@ export default function PianoScreen({
         }
       }
     },
-    [mode, isRunning, melody]
+    [mode, isRunning, melody, visibleNotes]
   );
 
   const handleStart = useCallback(() => {
@@ -175,8 +233,6 @@ export default function PianoScreen({
 
   // ---------------- KEYBOARD ----------------
   useEffect(() => {
-    const { keyToNote } = buildMaps(octaveOffset);
-
     function onKeyDown(e) {
       if (e.repeat) return;
 
@@ -191,7 +247,7 @@ export default function PianoScreen({
       }
 
       if (key === "arrowdown" || key === "-") {
-        setOctaveOffset((o) => Math.max(1, o - 1));
+        setOctaveOffset((o) => Math.max(2, o - 1));
         return;
       }
 
@@ -215,7 +271,6 @@ export default function PianoScreen({
       const ctx = audioCtxRef.current;
       if (!ctx) return;
 
-      const NOTES = require("../../consts/constants").NOTES;
       const noteData = NOTES[noteIdx];
 
       if (noteData) {
@@ -235,7 +290,7 @@ export default function PianoScreen({
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
     };
-  }, [octaveOffset, handleStart, handleNotePressed, audioCtxRef]);
+  }, [keyToNote, handleStart, handleNotePressed, audioCtxRef]);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
@@ -244,7 +299,6 @@ export default function PianoScreen({
       ? Math.round((practiceScore.hit / practiceScore.total) * 100)
       : null;
 
-  // ---------------- UI ----------------
   return (
     <div
       style={{
@@ -259,7 +313,6 @@ export default function PianoScreen({
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* BG overlay for readability */}
       <div
         style={{
           position: "absolute",
@@ -268,7 +321,6 @@ export default function PianoScreen({
         }}
       />
 
-      {/* UI LAYER */}
       <div style={{ position: "relative", zIndex: 2, padding: 12 }}>
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <GlassButton onClick={onBack}>
@@ -299,6 +351,7 @@ export default function PianoScreen({
               {STRINGS.PRACTICE}
             </GlassButton>
           )}
+
           <GlassButton onClick={() => setMetroMuted((m) => !m)}>
             {metroMuted ? <BellOff size={16} /> : <Bell size={16} />}
           </GlassButton>
@@ -318,9 +371,8 @@ export default function PianoScreen({
           <NoteQueue melody={melody} currentStep={currentStep} mode={mode} />
         </div>
 
-        {isRunning && <MetronomeDots beat={beat} />}
+        {isRunning && mode !== "autoplay" && <MetronomeDots beat={beat} />}
 
-        {/* Legend popup */}
         {showLegend && (
           <div
             style={{
@@ -339,7 +391,6 @@ export default function PianoScreen({
         )}
       </div>
 
-      {/* PIANO LAYER */}
       <div
         style={{
           position: "absolute",
@@ -349,8 +400,8 @@ export default function PianoScreen({
           zIndex: 3,
           display: "flex",
           justifyContent: "center",
-          transform: "scale(1.8)",
           transformOrigin: "bottom center",
+          transform: `scale(${Math.min(1, windowWidth / 1200)})`,
         }}
       >
         <Piano

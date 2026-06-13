@@ -16,10 +16,6 @@ export default function MoodStage({ onSelect }) {
         ))}
       </div>
     </ GlassCard>
-    <GlassButton className="hero-button" onClick={onSelect}>
-              {STRINGS.CONTINUE}
-            </GlassButton>
-    
     </>
   );
 }

@@ -10,6 +10,10 @@ export default function UploadStage({ file, onUpload }) {
   const [dragging, setDragging] = useState(false);
   const [img, setImg] = useState(null);
 
+  useState(() => {
+    if (file) setImg(file);
+  })
+
   function handleFile(img) {
     if (!img || !img.type.startsWith("image/")) return;
     setImg(img);
